@@ -83,6 +83,8 @@ shhirose_firewalld:
 ```
 
 ## Variable parameters
+AllowZoneDrifting: no | yes
+
 ### zones
 | key | required | default | type | values | notes |
 | --- | --- | --- | --- | --- | --- |

@@ -1,3 +1,8 @@
 ---
 - name: Reload firewalld
   shell: firewall-cmd --reload
+
+- name: Restart firewalld service
+  service:
+    name: firewalld
+    state: restarted

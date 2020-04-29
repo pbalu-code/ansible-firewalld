@@ -1,4 +1,10 @@
 ---
+- name: Set AllowZoneDrifting
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    regexp: '^AllowZoneDrifting.*$'
+    line: 'AllowZoneDrifting={{ AllowZoneDrifting }}'
+
 - name: Get current zones
   shell: firewall-cmd --get-zones --permanent
   register: zone_list
@@ -11,7 +17,7 @@
   with_items: "{{ shhirose_firewalld.zones | default([]) }}"
   notify: Reload firewalld
  
-- name: Force restart firewalld
+- name: Force reload firewalld
   shell: firewall-cmd --reload
   when: required_force_restart.changed
 
