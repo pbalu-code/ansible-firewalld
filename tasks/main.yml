@@ -2,6 +2,7 @@
 - name: check support OS
   debug: msg="This OS is not supported"
   failed_when: ansible_os_family != "RedHat"
+  when: not ansible_os_family == "RedHat"
   tags:
     - firewalld
     - system
